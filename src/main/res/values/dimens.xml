@@ -1,0 +1,12 @@
+<resources>
+	<dimen name="btn_tv_size">20sp</dimen>
+	<dimen name="tv_hint_size">18sp</dimen>
+
+	<dimen name="top_mask_height">100dp</dimen>
+	<dimen name="square_size">295dp</dimen>
+	<dimen name="btn_margin">5dp</dimen>
+	<dimen name="square_margin">60dp</dimen>
+	<dimen name="line_margin">5dp</dimen>
+	<dimen name="hint_tv_size">250dp</dimen>
+	<dimen name="tv_margin_top">15dp</dimen>
+</resources>

@@ -1,0 +1,21 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+	</style>
+
+	<!-- 扫描框btn-->
+	<style name="btn_style">
+		<item name="android:background">?android:attr/selectableItemBackground</item>
+		<item name="android:layout_width">0dp</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_margin">@dimen/btn_margin</item>
+		<item name="android:layout_weight">1</item>
+		<item name="android:textColor">@color/material</item>
+		<item name="android:textSize">@dimen/btn_tv_size</item>
+	</style>
+
+</resources>

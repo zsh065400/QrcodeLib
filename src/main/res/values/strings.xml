@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">qr_lib</string>
+	<string name="choose_img">图片</string>
+	<string name="open_light">开灯</string>
+	<string name="close_light">关灯</string>
+	<string name="tv_hint">请将二维码放置在扫描框内</string>
+</resources>
