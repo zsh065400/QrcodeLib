@@ -2,9 +2,13 @@
 
 >该库应用在实际项目中，包含二维码生成与扫描功能，功能完善且稳定易用，可直接投入到实际的开发当中
 >
->最低支持版本：**api19--->android4.4**
+>
+>最低支持版本：**api19--->android4.4**   
+>
 >编译版本：**23**
+>
 >目标版本（targetSdkVersion）：**22**（后续将会支持6.0运行时权限）
+
 
 
 ####使用方法
@@ -29,7 +33,9 @@ Encoder encoder = new Encoder.Builder()
 ######2.扫描
 
 >1.创建新的Activity并继承**com.zbar.lib.CaptureActivity**类
+>
 >2.实现 **decodeSuccess(String result)**和**decodeFail()**这两个方法
+>
 >3.启动该Activity扫描，获取扫描数据并处理。
 
 ######*范例*
