@@ -31,8 +31,8 @@ Encoder encoder = new Encoder.Builder()
 >1.创建新的Activity并继承**com.zbar.lib.CaptureActivity**类
 >2.实现 **decodeSuccess(String result)**和**decodeFail()**这两个方法
 >3.启动该Activity扫描，获取扫描数据并处理。
->
-#######*范例*
+
+######*范例*
 ```java
 public class ScanActivity extends CaptureActivity {
 	private Bitmap createQrcode() {
