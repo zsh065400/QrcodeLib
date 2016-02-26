@@ -12,6 +12,12 @@
 
 
 ####使用方法
+#####添加依赖(module下build.gradle)
+```gradle
+dependencies {
+    compile 'org.zsh.support:qrlib:1.0.0'
+}
+```
 ######1.生成（根据字数自动调整二维码级别，详见[二维码](http://baike.baidu.com/link?url=KDS-yIbBSRYEfmebrqYmRUUtxTVYQN8j_rkgYFX9e1EISoqLCsgyXsI0zJKH3844LXFdZiSGyaOIny8jJ84Ib_)）
 ```java
 Encoder encoder = new Encoder.Builder()
