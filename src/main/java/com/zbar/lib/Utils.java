@@ -6,17 +6,17 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
+
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 
 
 /**
@@ -28,30 +28,32 @@ public class Utils {
 	public static final int REQ_OPEN_IMG = 10006;
 	private static final String TAG = Utils.class.getSimpleName();
 
+	private static final String ENCODE = "ISO-8859-1";
+	private static final String CHARSET = "GB2312";
+
 	/**
-	 * 设置状态栏透明（沉浸式状态栏）
+	 * 对字符串进行重新编码，防止出现乱码
+	 *
+	 * @param str
+	 * @return
 	 */
-	@TargetApi(19)
-	public static void setLayoutTransparentStatus(Activity activity,
-	                                              int resId) {
-		setTranslucentStatus(true, activity);
-		// 获取activity状态栏高度
-		int statusHeight = getStatusHeight(activity);
-		// 获取颜色对象
-		Drawable drawable = activity.getResources().getDrawable(resId);
-		// 设置背景颜色
-		activity.getWindow().setBackgroundDrawable(drawable);
-		// 获取布局属性设置布局外上边距
-		ViewGroup rl = (ViewGroup) activity.findViewById(R.id.rootView);
-		FrameLayout.LayoutParams lp = null;
+	public static String recodeStr(String str) {
+		String newStr = "";
+
 		try {
-			lp = (FrameLayout.LayoutParams) rl.getLayoutParams();
-		} catch (Exception e) {
-			Log.e(TAG, "尚未设置View，无法实现沉浸式状态栏");
+			boolean ISO = Charset.forName(ENCODE).newEncoder().canEncode(str);
+			if (ISO) {
+				newStr = new String(str.getBytes(ENCODE), CHARSET);
+			} else {
+				newStr = str;
+			}
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
 		}
-		lp.setMargins(0, statusHeight, 0, 0);
-		rl.setLayoutParams(lp);
+		Log.d(TAG, "recode's str is :" + newStr);
+		return newStr;
 	}
+
 
 	@TargetApi(19)
 	public static void setTranslucentStatus(boolean on, Activity activity) {
@@ -67,31 +69,9 @@ public class Utils {
 	}
 
 	/**
-	 * 获得状态栏的高度
-	 *
-	 * @param context
-	 * @return
-	 */
-	public static int getStatusHeight(Context context) {
-
-		int statusHeight = -1;
-		try {
-			Class<?> clazz = Class.forName("com.android.internal.R$dimen");
-			Object object = clazz.newInstance();
-			int height = Integer.parseInt(clazz.getField("status_bar_height")
-					.get(object).toString());
-			statusHeight = context.getResources().getDimensionPixelSize(height);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return statusHeight;
-	}
-
-
-	/**
 	 * @param activity
 	 */
-	public static void openImg(Activity activity) {
+	public static void openGallery(Activity activity) {
 		Intent image = new Intent();
 		image.setAction(Intent.ACTION_GET_CONTENT);
 		image.setType("image/*");

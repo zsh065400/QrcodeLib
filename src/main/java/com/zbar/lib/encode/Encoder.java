@@ -13,7 +13,7 @@ import java.util.EnumMap;
 import java.util.Map;
 
 /**
- * @author :   Yoojia.Chen (yoojia.chen@gmail.com)
+ * @author : 赵树豪
  * @since 1.0
  * 将文本信息生成QRCode图片
  */
@@ -130,22 +130,22 @@ public final class Encoder {
 		/**
 		 * 设置输出图片的宽度
 		 *
-		 * @param outputBitmapWidth 宽度，单位：px
+		 * @param width 宽度，单位：px
 		 * @return Builder，用于链式调用
 		 */
-		public Builder setOutputBitmapWidth(int outputBitmapWidth) {
-			mOutputBitmapWidth = outputBitmapWidth;
+		public Builder setBitmapWidth(int width) {
+			mOutputBitmapWidth = width;
 			return this;
 		}
 
 		/**
 		 * 设置输出图片的高度
 		 *
-		 * @param outputBitmapHeight 高度，单位：px
+		 * @param height 高度，单位：px
 		 * @return Builder，用于链式调用
 		 */
-		public Builder setOutputBitmapHeight(int outputBitmapHeight) {
-			mOutputBitmapHeight = outputBitmapHeight;
+		public Builder setBitmapHeight(int height) {
+			mOutputBitmapHeight = height;
 			return this;
 		}
 
@@ -154,7 +154,7 @@ public final class Encoder {
 		 *
 		 * @param hintMargin 距离值，正整数。
 		 */
-		public Builder setOutputBitmapPadding(int hintMargin) {
+		public Builder setBitmapPadding(int hintMargin) {
 			mHintMargin = hintMargin;
 			return this;
 		}

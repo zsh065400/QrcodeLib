@@ -11,13 +11,7 @@ import android.view.WindowManager;
 import java.util.regex.Pattern;
 
 /**
- * 作者: 陈涛(1076559197@qq.com)
- * <p/>
- * 时间: 2014年5月9日 下午12:22:12
- * <p/>
- * 版本: V_1.0.0
- * <p/>
- * 描述: 相机参数配置
+ * 相机参数配置管理类
  */
 final class CameraConfigurationManager {
 

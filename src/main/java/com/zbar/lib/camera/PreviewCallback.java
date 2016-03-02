@@ -7,13 +7,7 @@ import android.os.Message;
 import android.util.Log;
 
 /**
- * 作者: 陈涛(1076559197@qq.com)
- * <p/>
- * 时间: 2014年5月9日 下午12:23:14
- * <p/>
- * 版本: V_1.0.0
- * <p/>
- * 描述: 相机预览回调
+ * 相机预览回调
  */
 final class PreviewCallback implements Camera.PreviewCallback {
 

@@ -1,50 +1,53 @@
-#QrcodeLib ¶şÎ¬ÂëÉú³ÉÉ¨Ãè¿â
+#QrcodeLib äºŒç»´ç ç”Ÿæˆæ‰«æåº“
 
->¸Ã¿âÓ¦ÓÃÔÚÊµ¼ÊÏîÄ¿ÖĞ£¬°üº¬¶şÎ¬ÂëÉú³ÉÓëÉ¨Ãè¹¦ÄÜ£¬¹¦ÄÜÍêÉÆÇÒÎÈ¶¨Ò×ÓÃ£¬¿ÉÖ±½ÓÍ¶Èëµ½Êµ¼ÊµÄ¿ª·¢µ±ÖĞ
+###è¯¥åº“åº”ç”¨åœ¨å®é™…é¡¹ç›®ä¸­ï¼ŒåŒ…å«äºŒç»´ç ç”Ÿæˆä¸æ‰«æåŠŸèƒ½ï¼ŒåŠŸèƒ½å®Œå–„ä¸”ç¨³å®šæ˜“ç”¨ï¼Œå¯ç›´æ¥æŠ•å…¥åˆ°å®é™…çš„å¼€å‘å½“ä¸­
+
+>- æœ€ä½æ”¯æŒç‰ˆæœ¬ï¼š**api19--->android4.4**   
 >
->
->×îµÍÖ§³Ö°æ±¾£º**api19--->android4.4**   
->
->±àÒë°æ±¾£º**23**
->
->Ä¿±ê°æ±¾£¨targetSdkVersion£©£º**22**£¨ºóĞø½«»áÖ§³Ö6.0ÔËĞĞÊ±È¨ÏŞ£©
+>- ç›®æ ‡ç‰ˆæœ¬ï¼ˆtargetSdkVersionï¼‰ï¼š**23**
 
 
+####æ›´æ–°æ—¥å¿—ï¼š
+>- 2016/03/02
+><br>v2.0,æ”¯æŒAndroid6.0+è¿è¡Œæ—¶æƒé™
 
-####Ê¹ÓÃ·½·¨
-#####Ìí¼ÓÒÀÀµ(moduleÏÂbuild.gradle)
+>- 2016/02/25
+><br>v1.0,å®Œæˆåˆæ­¥æ”¯æ’‘åº“
+
+
+
+####ä½¿ç”¨æ–¹æ³•
+#####æ·»åŠ ä¾èµ–(moduleä¸‹build.gradle)
 ```gradle
 dependencies {
-    compile 'org.zsh.support:qrlib:1.0.0'
+    compile 'org.zsh.support:qrlib:2.0.0'
 }
 ```
-######1.Éú³É£¨¸ù¾İ×ÖÊı×Ô¶¯µ÷Õû¶şÎ¬Âë¼¶±ğ£¬Ïê¼û[¶şÎ¬Âë](http://baike.baidu.com/link?url=KDS-yIbBSRYEfmebrqYmRUUtxTVYQN8j_rkgYFX9e1EISoqLCsgyXsI0zJKH3844LXFdZiSGyaOIny8jJ84Ib_)£©
+######1.ç”Ÿæˆï¼ˆæ ¹æ®å­—æ•°è‡ªåŠ¨è°ƒæ•´äºŒç»´ç çº§åˆ«ï¼Œè¯¦è§[äºŒç»´ç ](http://baike.baidu.com/link?url=KDS-yIbBSRYEfmebrqYmRUUtxTVYQN8j_rkgYFX9e1EISoqLCsgyXsI0zJKH3844LXFdZiSGyaOIny8jJ84Ib_)ï¼‰
 ```java
 Encoder encoder = new Encoder.Builder()
-				//×Ö·û¼¯£¬Ä¬ÈÏÎª¡°utf-8¡±
+				//å­—ç¬¦é›†ï¼Œé»˜è®¤ä¸ºâ€œutf-8â€
 				.setCharset("utf-8")
-				//Í¼Æ¬ÄÚ±ß¾à
+				//å›¾ç‰‡å†…è¾¹è·
 				.setBitmapPadding(2)
-				//ÉèÖÃÉú³ÉµÄÍ¼Æ¬¸ß¶È
+				//è®¾ç½®ç”Ÿæˆçš„å›¾ç‰‡é«˜åº¦
 				.setBitmapHeight(dimension)
-				//ÉèÖÃÉú³ÉµÄÍ¼Æ¬¿í¶È
+				//è®¾ç½®ç”Ÿæˆçš„å›¾ç‰‡å®½åº¦
 				.setBitmapWidth(dimension)
-				//ÉèÖÃ¶şÎ¬Âë±³¾°ÑÕÉ«£¬Ä¬ÈÏ°×É«
+				//è®¾ç½®äºŒç»´ç èƒŒæ™¯é¢œè‰²ï¼Œé»˜è®¤ç™½è‰²
 				.setBackgroundColor(int color)
-				//ÉèÖÃ¶şÎ¬ÂëÉ«¿éÑÕÉ«£¬Ä¬ÈÏºÚÉ«
+				//è®¾ç½®äºŒç»´ç è‰²å—é¢œè‰²ï¼Œé»˜è®¤é»‘è‰²
 				.setCodeColor(int color)
 				.build();
 
 ```
-######2.É¨Ãè
+######2.æ‰«æ
 
->1.´´½¨ĞÂµÄActivity²¢¼Ì³Ğ**com.zbar.lib.CaptureActivity**Àà
->
->2.ÊµÏÖ **decodeSuccess(String result)**ºÍ**decodeFail()**ÕâÁ½¸ö·½·¨
->
->3.Æô¶¯¸ÃActivityÉ¨Ãè£¬»ñÈ¡É¨ÃèÊı¾İ²¢´¦Àí¡£
+- 1.åˆ›å»ºæ–°çš„Activityå¹¶ç»§æ‰¿**com.zbar.lib.CaptureActivity**ç±»
+- 2.å®ç° **decodeSuccess(String result)**å’Œ**decodeFail()**è¿™ä¸¤ä¸ªæ–¹æ³•
+- 3.å¯åŠ¨è¯¥Activityæ‰«æï¼Œè·å–æ‰«ææ•°æ®å¹¶å¤„ç†ã€‚
 
-######*·¶Àı*
+######*èŒƒä¾‹*
 ```java
 public class ScanActivity extends CaptureActivity {
 	private Bitmap createQrcode() {
@@ -56,22 +59,22 @@ public class ScanActivity extends CaptureActivity {
 				.setBackgroundColor(Color.WHITE)
 				.setCodeColor(Color.RED)
 				.build();
-		return encoder.encode("²âÊÔÄÚÈİ");
+		return encoder.encode("æµ‹è¯•å†…å®¹");
 	}
 
 	@Override
 	protected void decodeSuccess(String result) {
-		//É¨Ãè³É¹¦£¬´¦Àí½á¹û
+		//æ‰«ææˆåŠŸï¼Œå¤„ç†ç»“æœ
 	}
 
 	@Override
 	protected void decodeFail() {
-		//É¨ÃèÊ§°Ü£¬ÌáÊ¾
+		//æ‰«æå¤±è´¥ï¼Œæç¤º
 	}
 }
 ```
 
-####ÌØ±ğÃùĞ»
-######1.zbar¿ªÔ´É¨Ãè¿â
-######2.Google¿ªÔ´µÄzxing¶şÎ¬ÂëÉú³ÉÉ¨Ãè¿â
-*Ã»ÓĞËûÃÇµÄ¿ªÔ´£¬¾ÍÃ»ÓĞÏÖÔÚÕâ¸ö¿âµÄµ®Éú£¬°İĞ»¡£*
+####ç‰¹åˆ«é¸£è°¢
+- 1.zbarå¼€æºæ‰«æåº“
+- 2.Googleå¼€æºçš„zxingäºŒç»´ç ç”Ÿæˆæ‰«æåº“
+*æ²¡æœ‰ä»–ä»¬çš„å¼€æºï¼Œå°±æ²¡æœ‰ç°åœ¨è¿™ä¸ªåº“çš„è¯ç”Ÿï¼Œæ‹œè°¢ã€‚*

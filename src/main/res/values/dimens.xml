@@ -1,6 +1,6 @@
 <resources>
 	<dimen name="btn_tv_size">20sp</dimen>
-	<dimen name="tv_hint_size">18sp</dimen>
+	<dimen name="tv_hint_size">14sp</dimen>
 
 	<dimen name="top_mask_height">100dp</dimen>
 	<dimen name="square_size">295dp</dimen>

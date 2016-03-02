@@ -1,6 +1,5 @@
 <manifest package="com.zbar.lib"
-          xmlns:android="http://schemas.android.com/apk/res/android"
-	>
+          xmlns:android="http://schemas.android.com/apk/res/android">
 	<!-- 摄像头控制 -->
 	<uses-permission android:name="android.permission.CAMERA"/>
 	<uses-permission android:name="android.permission.FLASHLIGHT"/>

@@ -4,11 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 
 /**
- * 作者: 陈涛(1076559197@qq.com)
- * <p>
- * 时间: 2014年5月9日 下午12:24:51
- * <p>
- * 版本: V_1.0.0
+ * 结束回调
  */
 public final class FinishListener
 		implements DialogInterface.OnClickListener, DialogInterface.OnCancelListener, Runnable {

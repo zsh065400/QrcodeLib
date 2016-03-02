@@ -10,13 +10,7 @@ import android.view.SurfaceHolder;
 import java.io.IOException;
 
 /**
- * 作者: 陈涛(1076559197@qq.com)
- * <p/>
- * 时间: 2014年5月9日 下午12:22:25
- * <p/>
- * 版本: V_1.0.0
- * <p/>
- * 描述: 相机管理
+ * 管理相机相关的调用
  */
 public final class CameraManager {
 	private static CameraManager cameraManager;

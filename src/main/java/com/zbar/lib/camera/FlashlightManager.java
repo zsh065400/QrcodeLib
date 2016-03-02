@@ -7,13 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * 作者: 陈涛(1076559197@qq.com)
- * <p/>
- * 时间: 2014年5月9日 下午12:22:42
- * <p/>
- * 版本: V_1.0.0
- * <p/>
- * 描述: 闪光灯管理
+ * 闪光灯控制
  */
 final class FlashlightManager {
 

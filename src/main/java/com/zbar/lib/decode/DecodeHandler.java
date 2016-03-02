@@ -15,21 +15,17 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 /**
- * 作者: 陈涛(1076559197@qq.com)
- * <p/>
- * 时间: 2014年5月9日 下午12:24:13
- * <p/>
- * 版本: V_1.0.0
- * <p/>
- * 描述: 接受消息后解码
+ * 解码Handler
  */
-final class DecodeHandler extends Handler {
+public final class DecodeHandler extends Handler {
+	private static final String TAG = DecodeHandler.class.getSimpleName();
 
 	CaptureActivity activity = null;
 
-	DecodeHandler(CaptureActivity activity) {
+	public DecodeHandler(CaptureActivity activity) {
 		this.activity = activity;
 	}
+
 
 	@Override
 	public void handleMessage(Message message) {
@@ -38,7 +34,6 @@ final class DecodeHandler extends Handler {
 
 		} else if (message.what == R.id.quit) {
 			Looper.myLooper().quit();
-
 		}
 	}
 

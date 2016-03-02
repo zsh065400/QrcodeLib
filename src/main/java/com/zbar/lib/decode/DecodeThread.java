@@ -8,13 +8,7 @@ import com.zbar.lib.CaptureActivity;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * 作者: 陈涛(1076559197@qq.com)
- * <p/>
- * 时间: 2014年5月9日 下午12:24:34
- * <p/>
- * 版本: V_1.0.0
- * <p/>
- * 描述: 解码线程
+ * 解码线程
  */
 final class DecodeThread extends Thread {
 

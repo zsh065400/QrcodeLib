@@ -1,5 +1,7 @@
 package com.zbar.lib;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
@@ -7,10 +9,12 @@ import android.graphics.Point;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
@@ -22,16 +26,24 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.zbar.lib.camera.CameraManager;
 import com.zbar.lib.decode.CaptureActivityHandler;
 import com.zbar.lib.decode.DecoderFile;
 import com.zbar.lib.decode.InactivityTimer;
 
+import org.zsh.permission.callback.IHandleCallback;
+import org.zsh.permission.callback.IRationale;
+import org.zsh.permission.handle.Request;
+
 import java.io.IOException;
 
 /**
  * 相机扫描界面，继承该类并实现decode两个方法即可完成解析回调操作
+ *
+ * @author zsh
+ * @version 2.0
  */
 public abstract class CaptureActivity extends Activity implements Callback,
 		View.OnClickListener {
@@ -102,12 +114,39 @@ public abstract class CaptureActivity extends Activity implements Callback,
 	@Override
 	public final void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-		setContentView(R.layout.aty_scan);
 		Utils.setTranslucentStatus(true, this);
+		init();
+	}
+
+	@TargetApi(Build.VERSION_CODES.M)
+	private void requestPermission() {
+		Request.getInstance(this).setRationable(new IRationale() {
+			@Override
+			public void showRationale(String[] permissions) {
+				Toast.makeText(CaptureActivity.this, "二维码扫描需要使用摄像头，请您允许该权限，拒绝会影响该功能的正常使用", Toast.LENGTH_LONG).
+						show();
+			}
+		});
+		Request.getInstance(this).execute(new IHandleCallback() {
+			@Override
+			public void granted(String[] permission) {
+				Log.d("CaptureActivity", "granted: success!");
+			}
+
+			@Override
+			public void denied(String[] permission) {
+				Log.d("CaptureActivity", "granted: failed!");
+				Toast.makeText(CaptureActivity.this, "二维码扫描需要获得相机使用权限，请您授权", Toast.LENGTH_LONG).show();
+				CaptureActivity.this.finish();
+			}
+
+		}, Manifest.permission.CAMERA);
+	}
+
+	private void init() {
 		// 初始化 CameraManager
+		setContentView(R.layout.aty_scan);
 		CameraManager.init(getApplication());
 		hasSurface = false;
 		inactivityTimer = new InactivityTimer(this);
@@ -128,7 +167,6 @@ public abstract class CaptureActivity extends Activity implements Callback,
 		btnOpenLight.setOnClickListener(this);
 		btnChooseImg = (Button) findViewById(R.id.btnChoosePic);
 		btnChooseImg.setOnClickListener(this);
-
 	}
 
 	@Override
@@ -157,6 +195,7 @@ public abstract class CaptureActivity extends Activity implements Callback,
 		isOpenLight = false;
 	}
 
+
 	// TODO: 2016/2/4 miui v7新版图库存在二次无法显示相机预览BUG
 	@SuppressWarnings("deprecation")
 	@Override
@@ -177,12 +216,14 @@ public abstract class CaptureActivity extends Activity implements Callback,
 		}
 		initBeepSound();
 		vibrate = true;
+		requestPermission();
 	}
 
 	@Override
 	protected final void onStart() {
 		super.onStart();
 		hasSurface = false;
+
 	}
 
 	@Override
@@ -332,6 +373,16 @@ public abstract class CaptureActivity extends Activity implements Callback,
 					break;
 			}
 		}
+	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//		int res = grantResults[0];
+//		if (res != PackageManager.PERMISSION_GRANTED) {
+//			finish();
+//		}
+		Request.getInstance(this).onRequestPermissionsResult(permissions, grantResults);
 	}
 
 	/**

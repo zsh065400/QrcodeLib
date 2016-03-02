@@ -9,11 +9,7 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 作者: 陈涛(1076559197@qq.com)
- * <p/>
- * 时间: 2014年5月9日 下午12:25:12
- * <p/>
- * 版本: V_1.0.0
+ * Activity计时管理，自动关闭
  */
 public final class InactivityTimer {
 
