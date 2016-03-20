@@ -27,6 +27,7 @@ android {
 dependencies {
 	compile files('libs/zxing.jar')
 	compile 'org.zsh.support:permission:2.1.0'
+	compile 'me.imid.swipebacklayout.lib:library:1.0.0'
 }
 
 apply from: 'https://raw.githubusercontent.com/BaronZ/android-common/master/gradle/android-artifacts.gradle'

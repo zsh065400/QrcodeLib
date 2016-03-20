@@ -112,7 +112,7 @@ public abstract class CaptureActivity extends Activity implements Callback,
 	 * Called when the activity is first created.
 	 */
 	@Override
-	public final void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		Utils.setTranslucentStatus(true, this);
@@ -170,7 +170,7 @@ public abstract class CaptureActivity extends Activity implements Callback,
 	}
 
 	@Override
-	public final void onClick(View v) {
+	public void onClick(View v) {
 		int i = v.getId();
 		if (i == R.id.btnOpenLights) {
 			if (!isOpenLight) {
@@ -220,14 +220,14 @@ public abstract class CaptureActivity extends Activity implements Callback,
 	}
 
 	@Override
-	protected final void onStart() {
+	protected void onStart() {
 		super.onStart();
 		hasSurface = false;
 
 	}
 
 	@Override
-	protected final void onPause() {
+	protected void onPause() {
 		super.onPause();
 		if (handler != null) {
 			handler.quitSynchronously();
@@ -237,7 +237,7 @@ public abstract class CaptureActivity extends Activity implements Callback,
 	}
 
 	@Override
-	protected final void onStop() {
+	protected void onStop() {
 		super.onStop();
 		if (isOpenLight) {
 			closeLight();
@@ -245,7 +245,7 @@ public abstract class CaptureActivity extends Activity implements Callback,
 	}
 
 	@Override
-	protected final void onDestroy() {
+	protected void onDestroy() {
 		inactivityTimer.shutdown();
 		super.onDestroy();
 	}
@@ -255,7 +255,7 @@ public abstract class CaptureActivity extends Activity implements Callback,
 	 *
 	 * @param result 扫描结果
 	 */
-	public final void dispatchDecode(String result) {
+	public void dispatchDecode(String result) {
 		inactivityTimer.onActivity();
 		playBeepSoundAndVibrate();
 		if (!TextUtils.isEmpty(result)) {

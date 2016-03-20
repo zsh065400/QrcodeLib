@@ -8,6 +8,9 @@
 
 
 ####更新日志：
+>- 2016/03/20
+><br>v2.0.1,去除部分final修饰
+
 >- 2016/03/02
 ><br>v2.0,支持Android6.0+运行时权限
 
@@ -20,7 +23,7 @@
 #####添加依赖(module下build.gradle)
 ```gradle
 dependencies {
-    compile 'org.zsh.support:qrlib:2.0.0'
+    compile 'org.zsh.support:qrlib:2.0.1'
 }
 ```
 ######1.生成（根据字数自动调整二维码级别，详见[二维码](http://baike.baidu.com/link?url=KDS-yIbBSRYEfmebrqYmRUUtxTVYQN8j_rkgYFX9e1EISoqLCsgyXsI0zJKH3844LXFdZiSGyaOIny8jJ84Ib_)）
