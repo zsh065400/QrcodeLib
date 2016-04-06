@@ -1,4 +1,4 @@
-package org.zsh.microinformation;
+﻿package org.zsh.microinformation;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -15,6 +15,7 @@ public class ScanActivity extends CaptureActivity {
 		Encoder encoder = new Encoder.Builder()
 				.setCharset("utf-8")
 				.setBitmapPadding(2)
+				//变量用final修饰，否则无用
 				.setBitmapHeight(500)
 				.setBitmapWidth(500)
 				.setBackgroundColor(Color.WHITE)

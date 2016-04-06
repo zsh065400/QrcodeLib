@@ -2,12 +2,15 @@
 
 ###该库应用在实际项目中，包含二维码生成与扫描功能，功能完善且稳定易用，可直接投入到实际的开发当中
 
->- 最低支持版本：**api19--->android4.4**   
+>- 最低支持版本：Android4.4
 >
 >- 目标版本（targetSdkVersion）：**23**
 
 
 ####更新日志：
+>- 2016/04/06
+><br>v2.0.2,更新权限管理库，小部分调整
+
 >- 2016/03/20
 ><br>v2.0.1,去除部分final修饰
 
@@ -23,11 +26,12 @@
 #####添加依赖(module下build.gradle)
 ```gradle
 dependencies {
-    compile 'org.zsh.support:qrlib:2.0.1'
+    compile 'org.zsh.support:qrlib:2.0.2'
 }
 ```
 ######1.生成（根据字数自动调整二维码级别，详见[二维码](http://baike.baidu.com/link?url=KDS-yIbBSRYEfmebrqYmRUUtxTVYQN8j_rkgYFX9e1EISoqLCsgyXsI0zJKH3844LXFdZiSGyaOIny8jJ84Ib_)）
 ```java
+//图片宽高要用final修饰
 Encoder encoder = new Encoder.Builder()
 				//字符集，默认为“utf-8”
 				.setCharset("utf-8")

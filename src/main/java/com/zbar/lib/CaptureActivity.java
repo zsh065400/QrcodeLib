@@ -33,9 +33,9 @@ import com.zbar.lib.decode.CaptureActivityHandler;
 import com.zbar.lib.decode.DecoderFile;
 import com.zbar.lib.decode.InactivityTimer;
 
+import org.zsh.permission.Permission;
 import org.zsh.permission.callback.IHandleCallback;
 import org.zsh.permission.callback.IRationale;
-import org.zsh.permission.handle.Request;
 
 import java.io.IOException;
 
@@ -43,7 +43,7 @@ import java.io.IOException;
  * 相机扫描界面，继承该类并实现decode两个方法即可完成解析回调操作
  *
  * @author zsh
- * @version 2.0
+ * @version 2.0.2
  */
 public abstract class CaptureActivity extends Activity implements Callback,
 		View.OnClickListener {
@@ -121,14 +121,16 @@ public abstract class CaptureActivity extends Activity implements Callback,
 
 	@TargetApi(Build.VERSION_CODES.M)
 	private void requestPermission() {
-		Request.getInstance(this).setRationable(new IRationale() {
+		Permission.getInstance().setRationable(new IRationale() {
 			@Override
 			public void showRationale(String[] permissions) {
-				Toast.makeText(CaptureActivity.this, "二维码扫描需要使用摄像头，请您允许该权限，拒绝会影响该功能的正常使用", Toast.LENGTH_LONG).
+				Toast.makeText(CaptureActivity.this,
+						"二维码扫描需要使用摄像头，请您允许该权限(已拒绝请手动修改)",
+						Toast.LENGTH_LONG).
 						show();
 			}
 		});
-		Request.getInstance(this).execute(new IHandleCallback() {
+		Permission.getInstance().request(new IHandleCallback() {
 			@Override
 			public void granted(String[] permission) {
 				Log.d("CaptureActivity", "granted: success!");
@@ -137,11 +139,13 @@ public abstract class CaptureActivity extends Activity implements Callback,
 			@Override
 			public void denied(String[] permission) {
 				Log.d("CaptureActivity", "granted: failed!");
-				Toast.makeText(CaptureActivity.this, "二维码扫描需要获得相机使用权限，请您授权", Toast.LENGTH_LONG).show();
+				Toast.makeText(CaptureActivity.this,
+						"二维码扫描需要获得相机使用权限，请您授权",
+						Toast.LENGTH_LONG).show();
 				CaptureActivity.this.finish();
 			}
 
-		}, Manifest.permission.CAMERA);
+		}, CaptureActivity.this, Manifest.permission.CAMERA);
 	}
 
 	private void init() {
@@ -196,7 +200,6 @@ public abstract class CaptureActivity extends Activity implements Callback,
 	}
 
 
-	// TODO: 2016/2/4 miui v7新版图库存在二次无法显示相机预览BUG
 	@SuppressWarnings("deprecation")
 	@Override
 	protected void onResume() {
@@ -267,7 +270,7 @@ public abstract class CaptureActivity extends Activity implements Callback,
 			closeLight();
 		}
 		// 连续扫描，不发送此消息扫描一次结束后就不能再次扫描
-		//handler.sendEmptyMessage(R.id.restart_preview);
+		handler.sendEmptyMessage(R.id.restart_preview);
 	}
 
 	private void initCamera(SurfaceHolder surfaceHolder) {
@@ -378,11 +381,7 @@ public abstract class CaptureActivity extends Activity implements Callback,
 	@Override
 	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//		int res = grantResults[0];
-//		if (res != PackageManager.PERMISSION_GRANTED) {
-//			finish();
-//		}
-		Request.getInstance(this).onRequestPermissionsResult(permissions, grantResults);
+		Permission.getInstance().onRequestPermissionsResult(permissions, grantResults);
 	}
 
 	/**
